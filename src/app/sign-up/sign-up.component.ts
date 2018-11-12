@@ -11,7 +11,7 @@ export class SignUpComponent implements OnInit {
   cfPwd: string;
   btnEnable: boolean;
 
-  btnEnable = false;
+  //btnEnable = false;
 
   private _isHidden = true;
 
