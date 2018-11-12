@@ -12,7 +12,6 @@ export class SignUpComponent implements OnInit {
   btnEnable: boolean;
 
   btnEnable = false;
-
   constructor() { }
 
   ngOnInit() {
@@ -26,8 +25,11 @@ export class SignUpComponent implements OnInit {
 
     if (this.cfPwd === this.pwd) {
       this.btnEnable = true;
+      console.log(this.cfPwd + ' , ' + this.pwd);
+
     } else {
       alert('This is not the same password');
+
       this.btnEnable = false;
 
     }
