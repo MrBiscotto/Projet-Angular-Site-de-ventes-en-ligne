@@ -18,14 +18,17 @@
 
 
     <label id="psw-repeat"><b>Repeat Password</b></label>
-    <input id="cfP" type="password" class="form-control" [(ngModel)]="cfPwd" (keyup)="onChange()" placeholder="Repeat Password"
+    <input id="cfP" type="password" class="form-control" [(ngModel)]="cfPwd" (keydown.enter)="onChange()" (keydown.Tab)="onChange()" (focusout)="onChange()" placeholder="Repeat Password"
            name="psw-repeat"
            required>
+
+    <div class="alert alert-danger" [hidden]="isHidden">Ensure both passwords match</div>
 
     <hr>
 
     <a routerLink="posts" [class.activated]="currentUrl == '/posts'">
       <button id="rBtn" type="submit" class="registerbtn" [disabled]="!btnEnable">Register</button>
+
     </a>
   </div>
 
