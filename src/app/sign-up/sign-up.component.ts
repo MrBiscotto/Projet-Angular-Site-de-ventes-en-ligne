@@ -22,6 +22,7 @@ export class SignUpComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this._btnEnable = false;
   }
 
   /*onSubmit() {
