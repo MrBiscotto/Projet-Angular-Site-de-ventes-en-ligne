@@ -5,7 +5,7 @@ import { DetailsComponent } from './details/details.component';
 import { PostsComponent } from './posts/posts.component';
 import { LoginComponent } from './login/login.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
-
+import {AddAuctionComponent} from './add-auction/add-auction.component';
 
 
 const routes: Routes = [{
@@ -28,7 +28,12 @@ const routes: Routes = [{
   {
     path: 'posts',
     component: PostsComponent
-  }];
+  },
+  {
+    path: 'add-auction',
+    component : AddAuctionComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

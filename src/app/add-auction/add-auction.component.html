@@ -1,0 +1,35 @@
+<form>
+  <div class="container">
+    <h1>Add an auction</h1>
+    <p>Please fill in this form to create an auction.</p>
+    <hr>
+
+    <label id="name"><b>Name</b></label>
+    <input type="text" class="form-control" placeholder="Enter name" name="text" [(ngModel)]="_name" (keydown.enter)="onChangeName()" (keydown.Tab)="onChangeName()" (focusout)="onChangeName()">
+    <div class="alert alert-danger" [hidden]="isHiddenName">Enter a valid name</div>
+
+
+    <label id="description"><b>Description</b></label>
+    <input type="text" class="form-control" rows="3" placeholder="Please put a description" name="description" required>
+
+
+    <label id="price"><b>Starting price</b></label>
+    <input type="text" class="form-control" [(ngModel)]="_price"
+           placeholder="Enter Price"
+           name="price" required>
+    <div class="alert alert-danger" [hidden]="isHiddenPrice">Please enter a valid price</div>
+
+    <!-- faire un ngfor avec un select option avec toutes les catégories-->
+    <label id="price"><b>Catégorie (select a faire avec un ngfor avec la BD)</b></label>
+
+    <hr>
+
+    <a routerLink="posts" [class.activated]="currentUrl == '/posts'">
+      <button id="rBtn" type="submit" class="registerbtn" [disabled]="!btnEnable">Register</button>
+    </a>
+  </div>
+
+  <div class="container signin">
+    <p>Already have an account? <a href="#" routerLink="login" [class.activated]="currentUrl == '/login'">Sign in</a>.</p>
+  </div>
+</form>
