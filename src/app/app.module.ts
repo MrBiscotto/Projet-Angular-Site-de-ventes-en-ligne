@@ -13,6 +13,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddAuctionComponent } from './add-auction/add-auction.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DetailsComponent,
     SidebarComponent,
     SignUpComponent,
-    LoginComponent
+    LoginComponent,
+    AddAuctionComponent
   ],
   imports: [
     BrowserModule,
