@@ -5,24 +5,25 @@
     <hr>
 
     <label id="email"><b>Email</b></label>
-    <input type="text" class="form-control" placeholder="Enter Email" name="email" required>
+    <input type="text" class="form-control" placeholder="Enter Email" name="email" [(ngModel)]="_email" (keydown.enter)="onChangeEmail()" (keydown.Tab)="onChangeEmail()" (focusout)="onChangeEmail()">
+    <div class="alert alert-danger" [hidden]="isHiddenEmail">Enter a valid email</div>
 
 
     <label id="username"><b>Username</b></label>
     <input type="text" placeholder="Enter your username" name="username" required>
 
     <label id="psw"><b>Password</b></label>
-    <input type="password" class="form-control" [(ngModel)]="pwd"
+    <input type="password" class="form-control" [(ngModel)]="_pwd"
            placeholder="Enter Password"
            name="psw" required>
 
 
     <label id="psw-repeat"><b>Repeat Password</b></label>
-    <input id="cfP" type="password" class="form-control" [(ngModel)]="cfPwd" (keydown.enter)="onChange()" (keydown.Tab)="onChange()" (focusout)="onChange()" placeholder="Repeat Password"
+    <input id="cfP" type="password" class="form-control" [(ngModel)]="_cfPwd" (keydown.enter)="onChangePassword()" (keydown.Tab)="onChangePassword()" (focusout)="onChangePassword()" placeholder="Repeat Password"
            name="psw-repeat"
            required>
 
-    <div class="alert alert-danger" [hidden]="isHidden">Ensure both passwords match</div>
+    <div class="alert alert-danger" [hidden]="isHiddenBothPassword">Ensure both passwords match</div>
 
     <hr>
 
