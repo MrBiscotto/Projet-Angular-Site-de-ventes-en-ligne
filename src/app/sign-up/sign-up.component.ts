@@ -7,77 +7,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  private _pwd: string;
-  private _cfPwd: string;
-  private _btnEnable: boolean;
-  private _email:string;
+  pwd: string;
+  cfPwd: string;
+  btnEnable: boolean;
 
-  private emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  // btnEnable = false;
 
-  //btnEnable = false;
-
-  private _isHiddenBothPassword = true;
-  private _isHiddenEmail = true;
+  private _isHidden = true;
 
   constructor() { }
 
   ngOnInit() {
-    this._btnEnable = false;
-    this._isHiddenEmail = true;
-    this._isHiddenBothPassword = true;
   }
 
-  /*onSubmit() {
+  onSubmit() {
+      alert('Incroyable');
+      // this.onChange();
+  }
 
-  }*/
+  onChange() {
 
-
-  public onChangePassword() {
-    if (this._cfPwd === this._pwd) {
-      this._btnEnable = true;
-      console.log(this._cfPwd + ' , ' + this._pwd);
-      this._isHiddenBothPassword = true;
+    if (this.cfPwd === this.pwd) {
+      this.btnEnable = true;
+      console.log(this.cfPwd + ' , ' + this.pwd);
+      this._isHidden = true;
 
     } else {
-      //alert('Ensure both passwords match');
-      this._isHiddenBothPassword = false;
-      this._btnEnable = false;
-    }
-  }
+      // alert('Ensure both passwords match');
+      this._isHidden = false;
 
-  public onChangeEmail(){
-    if(this._email == null){
-      this._isHiddenEmail = false;
+      this.btnEnable = false;
+
     }
 
-    else{
-      this._isHiddenEmail = true;
-    }
   }
 
-
-  get pwd(): string {
-    return this._pwd;
-  }
-
-  get cfPwd(): string {
-    return this._pwd;
-  }
-
-  get btnEnable(): boolean{
-    return this._btnEnable;
-  }
-
-  get isHiddenBothPassword(): boolean{
-    return this._isHiddenBothPassword;
-  }
-
-  get isHiddenEmail(): boolean{
-    return this._isHiddenEmail;
-  }
-
-  get email(): string{
-    return this._email;
+  get isHidden(): boolean {
+    return this._isHidden;
   }
 
 }
