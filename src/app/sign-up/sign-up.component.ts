@@ -23,6 +23,8 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit() {
     this._btnEnable = false;
+    this._isHiddenEmail = true;
+    this._isHiddenBothPassword = true;
   }
 
   /*onSubmit() {
