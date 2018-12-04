@@ -4,17 +4,15 @@
     <hr>
 
     <label id="username"><b>Username</b></label>
-    <input type="text" placeholder="Enter your username" name="username" [(ngModel)]="_username" required>
+    <input type="text" placeholder="Enter your username" name="username" required>
 
     <label id="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" [(ngModel)]="_pwd" required>
+    <input type="password" placeholder="Enter Password" name="psw" required>
     <hr>
 
-    <a routerLink="" [class.activated]="currentUrl == '/'">
+    <a routerLink="posts" [class.activated]="currentUrl == '/posts'">
     <button type="submit" class="loginBtn">Login</button>
     </a>
-
-
 
   </div>
 
