@@ -10,11 +10,11 @@ export class SignUpComponent implements OnInit {
   private _pwd: string;
   private _cfPwd: string;
   private _btnEnable: boolean;
-  private _email: string;
+  private _email:string;
 
-  private emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
+  private emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
-  // btnEnable = false;
+  //btnEnable = false;
 
   private _isHiddenBothPassword = true;
   private _isHiddenEmail = true;
@@ -28,7 +28,7 @@ export class SignUpComponent implements OnInit {
   }
 
   /*onSubmit() {
-    fsdqfsfqs
+
   }*/
 
 
@@ -39,16 +39,18 @@ export class SignUpComponent implements OnInit {
       this._isHiddenBothPassword = true;
 
     } else {
-      // alert('Ensure both passwords match');
+      //alert('Ensure both passwords match');
       this._isHiddenBothPassword = false;
       this._btnEnable = false;
     }
   }
 
-  public onChangeEmail() {
-    if (this._email == null) {
+  public onChangeEmail(){
+    if(this._email == null){
       this._isHiddenEmail = false;
-    } else {
+    }
+
+    else{
       this._isHiddenEmail = true;
     }
   }
@@ -62,19 +64,19 @@ export class SignUpComponent implements OnInit {
     return this._pwd;
   }
 
-  get btnEnable(): boolean {
+  get btnEnable(): boolean{
     return this._btnEnable;
   }
 
-  get isHiddenBothPassword(): boolean {
+  get isHiddenBothPassword(): boolean{
     return this._isHiddenBothPassword;
   }
 
-  get isHiddenEmail(): boolean {
+  get isHiddenEmail(): boolean{
     return this._isHiddenEmail;
   }
 
-  get email(): string {
+  get email(): string{
     return this._email;
   }
 
