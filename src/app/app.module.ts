@@ -16,6 +16,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AddAuctionComponent } from './add-auction/add-auction.component';
 import {HttpModule} from '@angular/http';
 import { MemberComponent } from './member/member.component';
+import { AuctionedObjectComponent } from './auctioned-object/auctioned-object.component';
+import { ObjectDetailComponent } from './auctioned-object/object-detail/object-detail.component';
+import { MemberDetailComponent } from './member/member-detail/member-detail.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { MemberComponent } from './member/member.component';
     SignUpComponent,
     LoginComponent,
     AddAuctionComponent,
-    MemberComponent
+    MemberComponent,
+    AuctionedObjectComponent,
+    ObjectDetailComponent,
+    MemberDetailComponent
   ],
   imports: [
     BrowserModule,

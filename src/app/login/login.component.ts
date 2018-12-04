@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
+import {MemberService} from '../member/member.service';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,20 @@ import {NavigationEnd, Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  currentUrl: string;
+  public members = [];
+  private _pdw: string;
+  private _username: string;
 
-  constructor(private router: Router) {
-    router.events.subscribe((_: NavigationEnd) => this.currentUrl = _.url);
-  }
+
+  constructor(private _memberService: MemberService) { }
+
 
   ngOnInit() {
+    this._memberService.getMembers()
+      .subscribe(data => this.members = data);
   }
+
+
 
 }
 

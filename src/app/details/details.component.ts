@@ -11,7 +11,6 @@ import {MemberService} from '../member/member.service';
 })
 export class DetailsComponent implements OnInit {
 
-  // user$: Object;
   public member$: Object ;
 
   constructor(private route: ActivatedRoute, private _memberService: MemberService) {

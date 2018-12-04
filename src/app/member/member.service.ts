@@ -17,4 +17,8 @@ export class MemberService {
   getMember(memberId) {
     return this.http.get('http://localhost:50867/api/Member/' + memberId);
   }
+
+  deleteMember(memberId) {
+    return this.http.delete('http://localhost:50867/api/Member/' + memberId);
+  }
 }
