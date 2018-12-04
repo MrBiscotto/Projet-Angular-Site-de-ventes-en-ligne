@@ -7,6 +7,10 @@ import { LoginComponent } from './login/login.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
 import {AddAuctionComponent} from './add-auction/add-auction.component';
 import {MemberComponent} from './member/member.component';
+import {AuctionedObjectComponent} from './auctioned-object/auctioned-object.component';
+import {ObjectDetailComponent} from './auctioned-object/object-detail/object-detail.component';
+import {MemberDetailComponent} from './member/member-detail/member-detail.component';
+
 
 
 const routes: Routes = [{
@@ -23,8 +27,12 @@ const routes: Routes = [{
   component: UsersComponent
   },
   {
-    path: 'details/:id',
-    component: DetailsComponent
+    path: 'member-detail/:id',
+    component: MemberDetailComponent
+  },
+  {
+    path: 'object-detail/:id',
+    component: ObjectDetailComponent
   },
   {
     path: 'posts',
@@ -37,6 +45,10 @@ const routes: Routes = [{
   {
     path: 'member',
     component : MemberComponent
+  },
+  {
+    path: 'auctioned-object',
+    component : AuctionedObjectComponent
   }
 ];
 

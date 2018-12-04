@@ -6,10 +6,35 @@ import {MemberService} from './member.service';
 import {animate, query, stagger, style, transition, trigger} from '@angular/animations';
 import {DataService} from '../data.service';
 
+
+
 @Component({
   selector: 'app-member',
   templateUrl: './member.component.html',
-  styleUrls: ['./member.component.scss']
+  styleUrls: ['./member.component.scss'],
+  animations: [
+    trigger('listStagger', [
+      transition('* <=> *', [
+        query(
+          ':enter',
+          [
+            style({ opacity: 0, transform: 'translateY(-15px)' }),
+            stagger(
+              '50ms',
+              animate(
+                '550ms ease-out',
+                style({ opacity: 1, transform: 'translateY(0px)' })
+              )
+            )
+          ],
+          { optional: true }
+        ),
+        query(':leave', animate('50ms', style({ opacity: 0 })), {
+          optional: true
+        })
+      ])
+    ])
+  ]
 })
 
 
@@ -24,7 +49,6 @@ export class MemberComponent implements OnInit {
     this._memberService.getMembers()
       .subscribe(data => this.members = data);
   }
-
 
 
 

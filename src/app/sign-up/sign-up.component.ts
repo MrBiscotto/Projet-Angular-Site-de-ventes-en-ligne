@@ -48,9 +48,7 @@ export class SignUpComponent implements OnInit {
   public onChangeEmail() {
     if (this._email == null) {
       this._isHiddenEmail = false;
-    }
-
-    else {
+    } else {
       this._isHiddenEmail = true;
     }
   }
