@@ -1,0 +1,10 @@
+<h1>{{ member$.username }}</h1>
+
+<ul>
+  <li><strong>wow:</strong> {{ member$.username }}</li>
+  <li><strong>Email:</strong> {{ member$.emailUser }}</li>
+  <li><strong>Phone:</strong> {{ member$.userPwd }}</li>
+ <a routerLink="../../member" [class.activated]="currentUrl == '/member'">
+   <button (click)="deleteMember()">Delete</button>
+ </a>
+</ul>

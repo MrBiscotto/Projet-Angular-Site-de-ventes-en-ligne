@@ -1,0 +1,10 @@
+<h2>Auctioned objects</h2>
+<ul [@listStagger]="objects">
+  <li *ngFor="let o of objects">
+   <a routerLink="/object-detail/{{o.idObject}}">{{ o.nameObject }}</a>
+    <ul>
+      <li>{{ o.sellingDate }}</li>
+      <li>{{ o.priceObject }} €</li>
+    </ul>
+  </li>
+</ul>
