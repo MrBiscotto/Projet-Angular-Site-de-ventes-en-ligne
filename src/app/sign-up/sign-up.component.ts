@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -14,8 +15,10 @@ export class SignUpComponent implements OnInit {
   // btnEnable = false;
 
   private _isHidden = true;
+  private apiValues: string[] = [];
 
   constructor() { }
+
 
   ngOnInit() {
   }

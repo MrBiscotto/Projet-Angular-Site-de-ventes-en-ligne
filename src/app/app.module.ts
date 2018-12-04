@@ -14,6 +14,8 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddAuctionComponent } from './add-auction/add-auction.component';
+import {HttpModule} from '@angular/http';
+import { MemberComponent } from './member/member.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { AddAuctionComponent } from './add-auction/add-auction.component';
     SidebarComponent,
     SignUpComponent,
     LoginComponent,
-    AddAuctionComponent
+    AddAuctionComponent,
+    MemberComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { AddAuctionComponent } from './add-auction/add-auction.component';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpModule,
     ReactiveFormsModule
   ],
   providers: [],

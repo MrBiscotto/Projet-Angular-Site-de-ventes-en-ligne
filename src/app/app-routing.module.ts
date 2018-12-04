@@ -6,6 +6,7 @@ import { PostsComponent } from './posts/posts.component';
 import { LoginComponent } from './login/login.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
 import {AddAuctionComponent} from './add-auction/add-auction.component';
+import {MemberComponent} from './member/member.component';
 
 
 const routes: Routes = [{
@@ -32,6 +33,10 @@ const routes: Routes = [{
   {
     path: 'add-auction',
     component : AddAuctionComponent
+  },
+  {
+    path: 'member',
+    component : MemberComponent
   }
 ];
 
