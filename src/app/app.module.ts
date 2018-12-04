@@ -20,6 +20,7 @@ import { AuctionedObjectComponent } from './auctioned-object/auctioned-object.co
 import { ObjectDetailComponent } from './auctioned-object/object-detail/object-detail.component';
 import { MemberDetailComponent } from './member/member-detail/member-detail.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,7 @@ import { MemberDetailComponent } from './member/member-detail/member-detail.comp
     AuctionedObjectComponent,
     ObjectDetailComponent,
     MemberDetailComponent
+
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,12 @@
 <h1>{{ member$.username }}</h1>
 
 <ul>
-  <li><strong>wow:</strong> {{ member$.username }}</li>
-  <li><strong>Email:</strong> {{ member$.emailUser }}</li>
-  <li><strong>Phone:</strong> {{ member$.userPwd }}</li>
+  <li><strong>Username : </strong> {{ member$.username }}</li>
+  <li><strong>Email : </strong> {{ member$.emailUser }}</li>
+  <li><strong>Password : </strong> {{ member$.userPwd }}</li>
+  <li><strong>Admin ? : </strong>{{member$.userAdmin}}</li>
  <a routerLink="../../member" [class.activated]="currentUrl == '/member'">
    <button (click)="deleteMember()">Delete</button>
  </a>
+  <button (click)="updateMember()">Update</button>
 </ul>
