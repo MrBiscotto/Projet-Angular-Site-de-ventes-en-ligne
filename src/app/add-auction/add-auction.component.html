@@ -6,7 +6,8 @@
 
     <label id="name"><b>Name</b></label>
     <input type="text" class="form-control" placeholder="Enter name" name="text" [(ngModel)]="_name" (keydown.enter)="onChangeName()" (keydown.Tab)="onChangeName()" (focusout)="onChangeName()">
-    <div class="alert alert-danger" [hidden]="isHiddenName">Enter a valid name</div>
+    <div class="alert alert-danger" [(hidden)]="isHiddenName">Enter a valid name</div>
+
 
 
     <label id="description"><b>Description</b></label>
@@ -16,8 +17,9 @@
     <label id="price"><b>Starting price</b></label>
     <input type="text" class="form-control" [(ngModel)]="_price"
            placeholder="Enter Price"
-           name="price" required>
-    <div class="alert alert-danger" [hidden]="isHiddenPrice">Please enter a valid price</div>
+           name="price"
+           (keydown.enter)="onChangePrice()" (keydown.Tab)="onChangePrice()" (focusout)="onChangePrice()">
+    <div class="alert alert-danger" [(hidden)]="isHiddenPrice">Please enter a valid price</div>
 
     <!-- faire un ngfor avec un select option avec toutes les catégories-->
     <label id="price2"><b>Catégorie (select a faire avec un ngfor avec la BD)</b></label>
