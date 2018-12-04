@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import {MemberService} from '../member/member.service';
 
 @Component({
   selector: 'app-details',
@@ -10,16 +11,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetailsComponent implements OnInit {
 
-  user$: Object;
+  // user$: Object;
+  public member$: Object ;
 
-  constructor(private route: ActivatedRoute, private data: DataService) {
-    this.route.params.subscribe( params => this.user$ = params.id );
+  constructor(private route: ActivatedRoute, private _memberService: MemberService) {
+    this.route.params.subscribe( params => this.member$ = params.id );
   }
 
   ngOnInit() {
-    this.data.getUser(this.user$).subscribe(
-      data => this.user$ = data
-    );
+
+    this._memberService.getMember(this.member$).subscribe(
+      data => this.member$ = data);
+
   }
 
 }
