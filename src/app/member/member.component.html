@@ -1,0 +1,10 @@
+<h2>Members list</h2>
+<ul>
+  <li *ngFor="let member of members">
+    <a routerLink="/details/{{member.idUser}}">{{ member.username }}</a>
+
+    <ul>
+      <li>{{ member.emailUser }}</li>
+    </ul>
+  </li>
+</ul>
