@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {MemberService} from '../member/member.service';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -9,47 +12,75 @@ export class SignUpComponent implements OnInit {
 
   private _pwd: string;
   private _cfPwd: string;
-  private _btnEnable: boolean;
   private _email: string;
+  private _username: string;
+  public members = [];
 
   private emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
+
 
   // btnEnable = false;
 
   private _isHiddenBothPassword = true;
+  private _isHiddenUsername = true;
   private _isHiddenEmail = true;
 
-  constructor() { }
+  constructor(public _memberService: MemberService, private _router: Router) { }
 
-  ngOnInit() {
-    this._btnEnable = false;
-    this._isHiddenEmail = true;
-    this._isHiddenBothPassword = true;
+  ngOnInit(){
+    this._memberService.getMembers()
+      .subscribe(data => this.members = data);
   }
 
-  /*onSubmit() {
+  // Verify the username
+  public onChangeUsername(): boolean {
 
-  }*/
+    for (const member of this.members) {
 
+      if (this._username.valueOf().toUpperCase() === member.username.valueOf().toUpperCase()) {
 
-  public onChangePassword() {
-    if (this._cfPwd === this._pwd) {
-      this._btnEnable = true;
-      console.log(this._cfPwd + ' , ' + this._pwd);
-      this._isHiddenBothPassword = true;
+        this._isHiddenUsername = false;
+        return false;
+        break;
 
-    } else {
-      // alert('Ensure both passwords match');
-      this._isHiddenBothPassword = false;
-      this._btnEnable = false;
+      } else {
+
+        this._isHiddenUsername = true;
+        return false;
+        break;
+      }
     }
   }
 
-  public onChangeEmail() {
+  // ADD Member
+  public signUp() {
+    if (this.onChangeUsername() === false && this.onChangePassword() === true && this.onChangeEmail() === true) {
+      this._memberService.addMember(this._email, this._username, this._pwd).subscribe();
+      this._router.navigate(['login']);
+    }
+  }
+
+  //Verify the password
+  public onChangePassword(): boolean{
+
+    if (this._cfPwd === this._pwd) {
+      this._isHiddenBothPassword = true;
+      return true;
+
+    } else {
+      this._isHiddenBothPassword = false;
+      return false;
+
+    }
+  }
+
+  public onChangeEmail(): boolean {
     if (this._email == null) {
       this._isHiddenEmail = false;
+      return false;
     } else {
       this._isHiddenEmail = true;
+      return true;
     }
   }
 
@@ -60,10 +91,6 @@ export class SignUpComponent implements OnInit {
 
   get cfPwd(): string {
     return this._pwd;
-  }
-
-  get btnEnable(): boolean {
-    return this._btnEnable;
   }
 
   get isHiddenBothPassword(): boolean {

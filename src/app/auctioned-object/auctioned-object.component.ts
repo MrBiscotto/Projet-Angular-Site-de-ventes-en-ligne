@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MemberService} from '../member/member.service';
 import {AuctionedObjectService} from './auctioned-object.service';
 import {animate, query, stagger, style, transition, trigger} from '@angular/animations';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-auctioned-object',

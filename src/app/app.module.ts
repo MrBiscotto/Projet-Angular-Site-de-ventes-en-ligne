@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PostsComponent } from './posts/posts.component';
-import { UsersComponent } from './users/users.component';
 import { DetailsComponent } from './details/details.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,18 +12,17 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddAuctionComponent } from './add-auction/add-auction.component';
-import {HttpModule} from '@angular/http';
 import { MemberComponent } from './member/member.component';
 import { AuctionedObjectComponent } from './auctioned-object/auctioned-object.component';
 import { ObjectDetailComponent } from './auctioned-object/object-detail/object-detail.component';
 import { MemberDetailComponent } from './member/member-detail/member-detail.component';
+import { CookieService } from 'ngx-cookie-service';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostsComponent,
-    UsersComponent,
     DetailsComponent,
     SidebarComponent,
     SignUpComponent,
@@ -35,7 +32,6 @@ import { MemberDetailComponent } from './member/member-detail/member-detail.comp
     AuctionedObjectComponent,
     ObjectDetailComponent,
     MemberDetailComponent
-
   ],
   imports: [
     BrowserModule,
@@ -43,10 +39,9 @@ import { MemberDetailComponent } from './member/member-detail/member-detail.comp
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpModule,
     ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [ CookieService ]
 })
 export class AppModule { }

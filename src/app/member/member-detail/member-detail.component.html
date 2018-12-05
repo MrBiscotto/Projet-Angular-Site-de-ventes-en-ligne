@@ -6,7 +6,6 @@
   <li><strong>Password : </strong> {{ member$.userPwd }}</li>
   <li><strong>Admin ? : </strong>{{member$.userAdmin}}</li>
  <a routerLink="../../member" [class.activated]="currentUrl == '/member'">
-   <button (click)="deleteMember()">Delete</button>
+   <button class="btn btn-secondary btn-lg active" (click)="deleteMember()">Delete</button>
  </a>
-  <button (click)="updateMember()">Update</button>
 </ul>

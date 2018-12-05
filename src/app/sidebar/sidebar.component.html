@@ -8,19 +8,19 @@
     </li>
 
     <li>
-      <a routerLink="auctioned-object" [class.activated]="currentUrl == '/auctioned-object'">
+      <a routerLink="auctioned-object" [class.activated]="_currentUrl == '/auctioned-object'">
         <i class="material-icons">import_contacts</i>
       </a>
     </li>
 
-    <li>
-      <a routerLink="member" [class.activated]="currentUrl == '/member'">
+    <li (click)="adminAccess()">
+      <a>
         <i class="material-icons">contacts</i>
       </a>
     </li>
 
-    <li>
-      <a routerLink="add-auction" [class.activated]="currentUrl == '/add-auction'">
+    <li (click)="userAccess()">
+      <a>
         <i class="material-icons">add_circle</i>
       </a>
     </li>

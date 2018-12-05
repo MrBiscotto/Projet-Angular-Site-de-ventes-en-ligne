@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MemberService} from '../member.service';
 
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
+
 @Component({
   selector: 'app-member-detail',
   templateUrl: './member-detail.component.html',
@@ -9,8 +15,12 @@ import {MemberService} from '../member.service';
 })
 export class MemberDetailComponent implements OnInit {
 
-  public member$: Object ;
+  private member$: Object ;
   private id$: Object;
+
+  animal: string;
+  name: string;
+
 
   constructor(private route: ActivatedRoute, private _memberService: MemberService) {
     this.route.params.subscribe( params => this.member$ = params.id );
@@ -29,3 +39,4 @@ export class MemberDetailComponent implements OnInit {
   }
 
 }
+
