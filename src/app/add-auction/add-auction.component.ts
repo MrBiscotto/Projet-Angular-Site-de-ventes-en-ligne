@@ -60,8 +60,8 @@ export class AddAuctionComponent implements OnInit {
           this._objectService.addObject(this._name, this._description, this._price,
             Number(this._cookieService.get('login')), this._cat).subscribe();
 
-          this.router.navigate(['auctioned-object']);
           this._sellExist = true;
+          alert('Action performed !');
           break;
         }
       }

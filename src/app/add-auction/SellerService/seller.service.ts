@@ -44,4 +44,15 @@ export class SellerService {
       });
     }
 
+  updateSellerPositive( pVote: number) {
+    return this.http.patch('http://localhost:50867/api/seller_user/', {
+      'positiveVote': pVote
+    });
+  }
+
+  updateSellerNegative( nVote: number) {
+    return this.http.patch('http://localhost:50867/api/seller_user/', {
+      'negativeVote': nVote
+    });
+  }
 }

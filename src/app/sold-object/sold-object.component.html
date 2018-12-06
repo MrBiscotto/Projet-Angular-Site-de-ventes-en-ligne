@@ -1,0 +1,11 @@
+<h2>List of objects sold</h2>
+
+<ul [@listStagger]="_objects">
+  <li *ngFor="let obj of _objects">
+    <a> {{obj.nameObject}}</a>
+    <ul>
+      <li>{{ obj.finalPrice }} €</li>
+      <li>{{ obj.catObject }}</li>
+    </ul>
+  </li>
+</ul>

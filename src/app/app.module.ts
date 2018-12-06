@@ -17,6 +17,7 @@ import { AuctionedObjectComponent } from './auctioned-object/auctioned-object.co
 import { ObjectDetailComponent } from './auctioned-object/object-detail/object-detail.component';
 import { MemberDetailComponent } from './member/member-detail/member-detail.component';
 import { CookieService } from 'ngx-cookie-service';
+import { SoldObjectComponent } from './sold-object/sold-object.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { CookieService } from 'ngx-cookie-service';
     MemberComponent,
     AuctionedObjectComponent,
     ObjectDetailComponent,
-    MemberDetailComponent
+    MemberDetailComponent,
+    SoldObjectComponent
   ],
   imports: [
     BrowserModule,

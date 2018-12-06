@@ -6,7 +6,8 @@
 
     <label id="email"><b>Email</b></label>
     <input type="text" class="form-control" placeholder="Enter Email" name="email" [(ngModel)]="_email" (keydown.enter)="onChangeEmail()" (keydown.Tab)="onChangeEmail()" (focusout)="onChangeEmail()">
-    <div class="alert alert-danger" [hidden]="isHiddenEmail">Enter a valid email</div>
+
+    <div class="alert alert-danger" [hidden]="_isHiddenEmail">Enter a valid email</div>
 
 
     <label id="username"><b>Username</b></label>
@@ -25,7 +26,7 @@
            name="psw-repeat"
            required>
 
-    <div class="alert alert-danger" [hidden]="isHiddenBothPassword">Ensure both passwords match</div>
+    <div class="alert alert-danger" [hidden]="_isHiddenBothPassword">Ensure both passwords match</div>
 
     <hr>
 

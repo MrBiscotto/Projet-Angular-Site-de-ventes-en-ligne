@@ -2,8 +2,15 @@
   <ul>
 
     <li>
+      <a routerLink="login" [class.activated]="currentUrl == '/login'">
+        <i class="material-icons">person</i>
+        <!-- person_outline -->
+      </a>
+    </li>
+
+    <li>
       <a routerLink="" [class.activated]="currentUrl == '/'">
-        <i class="material-icons">vpn_key</i>
+        <i class="material-icons">person_add</i>
       </a>
     </li>
 
@@ -15,13 +22,19 @@
 
     <li (click)="adminAccess()">
       <a>
-        <i class="material-icons">contacts</i>
+        <i class="material-icons">supervisor_account</i>
       </a>
     </li>
 
     <li (click)="userAccess()">
       <a>
         <i class="material-icons">add_circle</i>
+      </a>
+    </li>
+
+    <li routerLink="soldObject" [class.activated]="_currentUrl == '/soldObject'">
+      <a>
+        <i class="material-icons">poll</i>
       </a>
     </li>
 

@@ -7,6 +7,7 @@ import {MemberComponent} from './member/member.component';
 import {AuctionedObjectComponent} from './auctioned-object/auctioned-object.component';
 import {ObjectDetailComponent} from './auctioned-object/object-detail/object-detail.component';
 import {MemberDetailComponent} from './member/member-detail/member-detail.component';
+import {SoldObjectComponent} from './sold-object/sold-object.component';
 
 
 
@@ -34,6 +35,10 @@ const routes: Routes = [{
   {
     path: 'member',
     component : MemberComponent
+  },
+  {
+    path: 'soldObject',
+    component : SoldObjectComponent
   },
   {
     path: 'auctioned-object',

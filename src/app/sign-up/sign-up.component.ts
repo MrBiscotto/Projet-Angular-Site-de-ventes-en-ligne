@@ -15,6 +15,7 @@ export class SignUpComponent implements OnInit {
   private _email: string;
   private _username: string;
   public members = [];
+  private _verifyUsername = false;
 
   private emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
 
@@ -40,16 +41,18 @@ export class SignUpComponent implements OnInit {
       if (this._username.valueOf().toUpperCase() === member.username.valueOf().toUpperCase()) {
 
         this._isHiddenUsername = false;
-        return false;
-        break;
-
-      } else {
-
-        this._isHiddenUsername = true;
-        return false;
+        this._verifyUsername = true;
+        return true;
         break;
       }
     }
+
+       if(this._verifyUsername === false) {
+
+        this._isHiddenUsername = true;
+        return false;
+      }
+
   }
 
   // ADD Member
@@ -57,11 +60,12 @@ export class SignUpComponent implements OnInit {
     if (this.onChangeUsername() === false && this.onChangePassword() === true && this.onChangeEmail() === true) {
       this._memberService.addMember(this._email, this._username, this._pwd).subscribe();
       this._router.navigate(['login']);
+      alert('successful register !');
     }
   }
 
   //Verify the password
-  public onChangePassword(): boolean{
+  public onChangePassword(): boolean {
 
     if (this._cfPwd === this._pwd) {
       this._isHiddenBothPassword = true;
@@ -75,7 +79,7 @@ export class SignUpComponent implements OnInit {
   }
 
   public onChangeEmail(): boolean {
-    if (this._email == null) {
+    if (this._email === '') {
       this._isHiddenEmail = false;
       return false;
     } else {

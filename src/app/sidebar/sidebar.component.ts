@@ -40,6 +40,7 @@ export class SidebarComponent implements OnInit {
 
   }
 
+
   userAccess() {
 
     const cookieExists: boolean = this._cookieService.check('login');
@@ -47,6 +48,7 @@ export class SidebarComponent implements OnInit {
     if (cookieExists === true) {
       this.router.navigate(['add-auction']);
     } else {
+      this.router.navigate(['login']);
       alert('You must be connected !');
     }
   }

@@ -15,6 +15,10 @@ export class AuctionedObjectService {
     return this.http.get<IObject[]>('http://localhost:50867/api/auctioned_object');
   }
 
+  deleteObject(objectId){
+    return this.http.delete('http://localhost:50867/api/auctioned_object/' + objectId);
+  }
+
   getObject(objectId) {
     return this.http.get('http://localhost:50867/api/auctioned_object/' + objectId);
   }

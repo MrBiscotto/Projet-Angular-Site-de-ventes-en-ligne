@@ -1,12 +1,19 @@
 <h1>{{ object$.nameObject }}</h1>
 
 <ul>
-  <li><strong>Object description : </strong> {{ object$.descriptionObject }}</li>
-  <li><strong>Price :  </strong> {{ object$.priceObject }} €</li>
-</ul>
-<ul>
-
   <li>
-    <strong>Seller : </strong>{{_seller}}
+    <strong>Object description : </strong> {{ object$.descriptionObject }}<br>
+    <strong>Price :  </strong> {{ object$.priceObject }} €
   </li>
+</ul>
+
+<ul>
+  <li>
+    <strong>Seller : </strong>{{_seller}}<br>
+    <strong>Number of sales : </strong>{{_nbSales}}<br>
+  </li>
+
+  <li><strong>Positive votes </strong> {{_pVotes}} <input type="image" src="http://image.noelshack.com/fichiers/2018/49/4/1544087951-pouce-vert-png.png"  [disabled]="_green" (click)="green()"  width="50" height="50"/> &nbsp;&nbsp;&nbsp; <strong>Negative votes </strong> {{_nVotes}} <input type="image" src="http://image.noelshack.com/fichiers/2018/49/4/1544087667-red.png" [disabled]="_red" (click)="red()" width="50" height="50"/></li>
+  <br>
+  <button class="btn btn-secondary btn-lg active"  (click)="buyObject()">Buy it</button>
 </ul>
