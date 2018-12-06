@@ -19,7 +19,6 @@ import { MemberDetailComponent } from './member/member-detail/member-detail.comp
 import { CookieService } from 'ngx-cookie-service';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

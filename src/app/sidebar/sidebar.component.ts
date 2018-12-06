@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {MemberService} from '../member/member.service';
-import {IMember} from '../member/IMember';
-import {Observable} from 'rxjs';
 
 
 @Component({
@@ -17,17 +15,13 @@ export class SidebarComponent implements OnInit {
   private _isHiddenPwdUser = true;
   public admin: Object;
 
-  constructor(private router: Router, private _cookieService: CookieService, private _memberService: MemberService) {
+  constructor(private router: Router, private _cookieService: CookieService,
+              private _memberService: MemberService) {
     router.events.subscribe((_: NavigationEnd) => this._currentUrl = _.url);
+
   }
 
-  ngOnInit() {
-
-
-   /*if (this.admin === true) {
-      this._isHiddenPwdUser = false;
-   }*/
-  }
+  ngOnInit() {}
 
   adminAccess() {
     const cookieExists: boolean = this._cookieService.check('login');

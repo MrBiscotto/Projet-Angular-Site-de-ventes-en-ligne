@@ -19,8 +19,9 @@ export class AddAuctionComponent implements OnInit {
   private _isHiddenPrice: boolean;
   private _price: number;
   private _cat: string;
-  private _seller$: Object ;
+  private _seller$: Object;
   private _sellers = [];
+  private _sellExist = false;
 
   constructor(private router: Router, private _objectService: AuctionedObjectService,
               private _cookieService: CookieService, private _sellerService: SellerService) {
@@ -40,47 +41,60 @@ export class AddAuctionComponent implements OnInit {
   }
 
   // Add sell object
-  public onAddObject() {
+  public onAddObject(user: string) {
     /*Add seller object*/
 
     // Add member seller
-  if (this.onChangeName() === true && this.onChangePrice() === true && this._cat !== '') {
+    if (this.onChangeName() === true && this.onChangePrice() === true && this._cat !== '') {
 
-    for (const s of this._sellers) {
-      if (s.idUser === Number(this._cookieService.get('login'))) {
-        //UPDATE A METTRE EN PLACE
+      for (const s of this._sellers) {
 
+        if (s.idUser === Number(this._cookieService.get('login'))) {
+          console.log('UDPATE');
+          const newSales = s.nbSales + 1;
+          console.log('UDPATE SELLER / ' + s.username.valueOf() +' ' + newSales +' '+  s.positiveVote+' '+ s.negativeVote+' '+ s.idUser);
 
-        this._objectService.addObject(this._name, this._description, this._price,
-          Number(this._cookieService.get('login')), this._cat).subscribe();
+          //UPDATE MY SELLER_USER HERE ****
+          this._sellerService.updateSeller(s.username.valueOf(), newSales, s.positiveVote, s.negativeVote, s.idUser).subscribe();
 
-        this.router.navigate(['auctioned-object']);
-        break;
-      } else {
+          this._objectService.addObject(this._name, this._description, this._price,
+            Number(this._cookieService.get('login')), this._cat).subscribe();
+
+          this.router.navigate(['auctioned-object']);
+          this._sellExist = true;
+          break;
+        }
+      }
+
+      if (this._sellExist === false) {
 
         console.log('NEW SELLER');
-        this._sellerService.addSeller(this._cookieService.get('username'), 1, 0, 0,
-          Number(this._cookieService.get('login'))).subscribe();
+      this._sellerService.addSeller(this._cookieService.get('username'), 1, 0, 0,
+        Number(this._cookieService.get('login'))).subscribe();
 
-        this._objectService.addObject(this._name, this._description, this._price,
-          Number(this._cookieService.get('login')), this._cat).subscribe();
+      this._objectService.addObject(this._name, this._description, this._price,
+        Number(this._cookieService.get('login')), this._cat).subscribe();
 
-        this.router.navigate(['auctioned-object']);
-        break;
-      }
+      this.router.navigate(['auctioned-object']);
+
     }
 
   } else {
-    alert('no selection in the drop-down list !');
+  alert('no selection in the drop-down list !');
   }
 
   }
+
+
+
+
 
   public onChangeName(): boolean {
     if (this._name === '') {
       this._isHiddenName = false;
       return false;
     } else {
+      console.log('PAS VIDE ' + this._name );
       this._isHiddenName = true;
       return true;
     }

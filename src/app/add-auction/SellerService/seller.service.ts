@@ -30,7 +30,18 @@ export class SellerService {
       'nbSales': nbsales,
       'positiveVote': pVote,
       'negativeVote': nVote,
-      'idUser': idUser,
+      'idUser': idUser
     });
   }
+
+  updateSeller(user: string, nbsales: number, pVote: number, nVote: number, idUser: number) {
+      return this.http.put('http://localhost:50867/api/seller_user/', {
+        'username': user,
+        'nbSales': nbsales,
+        'positiveVote': pVote,
+        'negativeVote': nVote,
+        'idUser': idUser
+      });
+    }
+
 }
