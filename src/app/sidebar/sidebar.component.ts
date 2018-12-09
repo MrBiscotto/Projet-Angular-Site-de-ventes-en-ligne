@@ -23,7 +23,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {}
 
-  adminAccess() {
+  public adminAccess() {
     const cookieExists: boolean = this._cookieService.check('login');
     if (cookieExists === true) {
       this.admin = this._memberService.getMember(this._cookieService.get('login'));
@@ -41,7 +41,7 @@ export class SidebarComponent implements OnInit {
   }
 
 
-  userAccess() {
+  public userAccess() {
 
     const cookieExists: boolean = this._cookieService.check('login');
 
@@ -52,5 +52,7 @@ export class SidebarComponent implements OnInit {
       alert('You must be connected !');
     }
   }
+
+
 
 }

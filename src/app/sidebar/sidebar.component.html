@@ -1,12 +1,13 @@
 <nav>
   <ul>
 
-    <li>
-      <a routerLink="login" [class.activated]="currentUrl == '/login'">
+    <li routerLink="login" [class.activated]="currentUrl == '/login'" >
+      <a>
         <i class="material-icons">person</i>
-        <!-- person_outline -->
       </a>
     </li>
+
+
 
     <li>
       <a routerLink="" [class.activated]="currentUrl == '/'">

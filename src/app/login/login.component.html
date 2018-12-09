@@ -3,17 +3,20 @@
     <h1>Login</h1>
     <hr>
 
+    <div [hidden]="_isHiddenDiv">
     <label id="username"><b>Username</b></label>
     <input type="text" placeholder="Enter your username" name="username" [(ngModel)]="_username" required>
 
     <label id="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" [(ngModel)]="_pwd" required>
     <hr>
+    </div>
 
     <div class="alert alert-danger" [hidden]="_isHiddenPwdUser">Password or Username incorrect !</div>
 
 
-    <input type="submit" class="loginBtn"  [disabled]="btnEnable" value="Login"/>
+    <input type="submit" class="loginBtn" [hidden]="_isHiddenLogin"  [disabled]="btnEnable" value="Login"/>
+    <input type ="button" class="loginBtn" (click)="logOut()" [hidden]="_isHiddenLogout" value="Log out"/>
 
   </div>
 

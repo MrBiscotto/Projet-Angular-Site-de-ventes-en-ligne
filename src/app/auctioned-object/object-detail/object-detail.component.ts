@@ -17,7 +17,7 @@ export class ObjectDetailComponent implements OnInit {
   public object$: Object ;
   private _objects = [];
   private _objId: number;
-  private member$: Object ;
+  private _member$: Object ;
   private _sellers = [];
   private _seller: string;
   private _idSeller: number;
@@ -44,7 +44,7 @@ export class ObjectDetailComponent implements OnInit {
       data => this.object$ = data);
 
     this._memberService.getMember(Number(this._cookieService.get('login')))
-      .subscribe(data2 => this.member$ = data2);
+      .subscribe(data2 => this._member$ = data2);
 
     this._sellerService.getSellers()
       .subscribe(data3 => {
@@ -56,83 +56,104 @@ export class ObjectDetailComponent implements OnInit {
 
    public buyObject(){
 
-    for (const obj of this._objects) {
-      if (obj.idObject === Number(this._objId)) {
-        this._objectService.deleteObject(obj.idObject).subscribe();
-        this._soldObjectService.addSoldObject(obj.priceObject, obj.nameObject, obj.catObject).subscribe();
-        this._router.navigate(['auctioned-object']);
-        alert('Purchase made successfully !');
-        break;
-      }
-    }
+     const cookieExists: boolean = this._cookieService.check('login');
+
+     if (cookieExists === true) {
+
+       for (const obj of this._objects) {
+         if (obj.idObject === Number(this._objId)) {
+           this._objectService.deleteObject(obj.idObject).subscribe();
+           this._soldObjectService.addSoldObject(obj.priceObject, obj.nameObject, obj.catObject).subscribe();
+           this._router.navigate(['auctioned-object']);
+           alert('Purchase made successfully !');
+           break;
+         }
+       }
+     } else {
+       this._router.navigate(['login']);
+       alert('You must be connected !');
+     }
    }
 
 
     public green() {
-    if(this.userAccess() === true) {
 
-      let idUser = 0;
-      let username: string;
-      let nbSales: number;
-      let pVotes: number;
-      let nVotes: number;
+    if(this._green === true){
+      alert('You have already rated !');
+    } else {
 
-      for (const obj of this._objects) {
-        if (obj.idObject === Number(this._objId)) {
-          idUser = obj.idUser;
-          break;
+
+      if (this.userAccess() === true) {
+
+        let idUser = 0;
+        let username: string;
+        let nbSales: number;
+        let pVotes: number;
+        let nVotes: number;
+
+        for (const obj of this._objects) {
+          if (obj.idObject === Number(this._objId)) {
+            idUser = obj.idUser;
+            break;
+          }
         }
-      }
 
-      for(const seller of this._sellers){
+        for (const seller of this._sellers) {
 
-        if(seller.idUser === idUser){
-          username = seller.username;
-          nbSales = seller.nbSales;
-          pVotes = seller.positiveVote;
-          nVotes = seller.negativeVote;
-          pVotes ++;
+          if (seller.idUser === idUser) {
+            username = seller.username;
+            nbSales = seller.nbSales;
+            pVotes = seller.positiveVote;
+            nVotes = seller.negativeVote;
+            pVotes++;
 
-          this._sellerService.updateSeller(username, nbSales, pVotes, nVotes, idUser).subscribe();
-          this._green = true;
-          this._red = true;
-          alert('rated note !');
-          break;
+            this._sellerService.updateSeller(username, nbSales, pVotes, nVotes, idUser).subscribe();
+            this._green = true;
+            this._red = true;
+            alert('rated note !');
+            break;
+          }
         }
-      }
 
+      }
     }
     }
 
   public red(){
-    if(this.userAccess() === true) {
 
-      let idUser = 0;
-      let username: string;
-      let nbSales: number;
-      let pVotes: number;
-      let nVotes: number;
+    if(this._red === true){
+      alert('You have already rated !');
+    } else {
 
-      for (const obj of this._objects) {
-        if (obj.idObject === Number(this._objId)) {
-          idUser = obj.idUser;
-          break;
+      if (this.userAccess() === true) {
+
+        let idUser = 0;
+        let username: string;
+        let nbSales: number;
+        let pVotes: number;
+        let nVotes: number;
+
+        for (const obj of this._objects) {
+          if (obj.idObject === Number(this._objId)) {
+            idUser = obj.idUser;
+            break;
+          }
         }
-      }
 
-      for (const sell of this._sellers) {
-        if (sell.idUser === idUser) {
-          username = sell.username;
-          nbSales = sell.nbSales;
-          pVotes = sell.positiveVote;
-          nVotes = sell.negativeVote;
-          nVotes ++;
+        for (const sell of this._sellers) {
+          if (sell.idUser === idUser) {
+            username = sell.username;
+            nbSales = sell.nbSales;
+            pVotes = sell.positiveVote;
+            nVotes = sell.negativeVote;
+            nVotes++;
 
-          this._sellerService.updateSeller(username, nbSales, pVotes, nVotes, idUser).subscribe();
-          this._green = true;
-          this._red = true;
-          alert('rated note !');
-          break;
+            this._sellerService.updateSeller(username, nbSales, pVotes, nVotes, idUser).subscribe();
+            this._green = true;
+            this._red = true;
+            alert('rated note !');
+            break;
+          }
         }
       }
     }
